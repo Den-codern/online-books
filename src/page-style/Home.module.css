@@ -1,0 +1,38 @@
+.home {
+  padding: 20px;
+}
+
+.sort {
+  background-color: var(--blue);
+  display: flex;
+  height: 70px;
+
+  align-items: center;
+}
+
+.sort__item {
+  margin-left: 20px;
+}
+.btn {
+  border: none;
+  padding: 10px;
+  font-size: 17px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btn span {
+  margin-left: 10px;
+}
+.search {
+  border: none;
+  width: 350px;
+  padding: 10px;
+  font-size: 17px;
+  outline: none;
+}
+.books {
+    margin-top: 20px;
+}
