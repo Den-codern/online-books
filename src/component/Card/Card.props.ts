@@ -1,1 +1,5 @@
-export interface CardProps {}
+export interface CardProps {
+  name: string;
+  author: string;
+  photo: string;
+}

@@ -1,9 +1,20 @@
 import { useEffect } from "react";
 import styles from "../page-style/Home.module.css";
 import { AiFillCaretDown } from "react-icons/ai";
-import Book from "../services/Book";
 import Card from "../component/Card/Card";
+import { useDispatch } from "react-redux";
+import { fetchBook } from "../redux/actions/bookAction";
+import { useSelector } from "react-redux";
+import { RootState } from "../redux/reducers";
+import BookService from "../services/BookService";
 function Home() {
+  const dispatch = useDispatch();
+  const books = useSelector((state: RootState) => state.book.books);
+
+  useEffect(() => {
+    dispatch(fetchBook);
+  }, []);
+
   return (
     <div className={styles.home}>
       <div className={styles.sort}>
@@ -20,7 +31,9 @@ function Home() {
       </div>
 
       <div className={styles.books}>
-        <Card />
+        {books.map((book) => (
+          <Card name={book.name} photo={book.photo} author={book.author} />
+        ))}
       </div>
     </div>
   );
