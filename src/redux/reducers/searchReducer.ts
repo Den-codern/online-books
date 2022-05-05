@@ -16,7 +16,10 @@ export const searchReducer: Reducer<SearchState, SearchAction> = (
     case SearchActionType.FIND_BOOKS:
       const { payload } = action;
 
-      const books = state.books.filter((book) => book.author.includes(payload));
+    
+      const books = state.books.filter((book) => {
+        return book.author.toLowerCase().indexOf(payload.toLowerCase()) > -1;
+      });
       return { ...state, books, value: payload };
     case SearchActionType.RESET_BOOKS:
       return { ...state, books: action.payload };

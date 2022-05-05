@@ -17,12 +17,11 @@ function Home() {
   }, []);
 
   function onChange(e) {
-    if (!e.currentTarget.value) {
-      return dispatch({
-        type: SearchActionType.RESET_BOOKS,
-        payload: defaultBooks,
-      });
-    }
+    dispatch({
+      type: SearchActionType.RESET_BOOKS,
+      payload: defaultBooks,
+    });
+
     dispatch({
       type: SearchActionType.FIND_BOOKS,
       payload: e.currentTarget.value,
@@ -45,7 +44,7 @@ function Home() {
             className={styles.search}
           />
         </div>
-        
+
         <div className={styles.sort__item}></div>
       </div>
 
