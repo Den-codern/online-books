@@ -7,13 +7,27 @@ import { fetchBook } from "../redux/actions/bookAction";
 import { useSelector } from "react-redux";
 import { RootState } from "../redux/reducers";
 import BookService from "../services/BookService";
+import { SearchActionType } from "../redux/types/search";
 function Home() {
   const dispatch = useDispatch();
-  const books = useSelector((state: RootState) => state.book.books);
-
+  const books = useSelector((state: RootState) => state.search.books);
+  const defaultBooks = useSelector((state: RootState) => state.book.books);
   useEffect(() => {
     dispatch(fetchBook);
   }, []);
+
+  function onChange(e) {
+    if (!e.currentTarget.value) {
+      return dispatch({
+        type: SearchActionType.RESET_BOOKS,
+        payload: defaultBooks,
+      });
+    }
+    dispatch({
+      type: SearchActionType.FIND_BOOKS,
+      payload: e.currentTarget.value,
+    });
+  }
 
   return (
     <div className={styles.home}>
@@ -25,8 +39,13 @@ function Home() {
           </button>
         </div>
         <div className={styles.sort__item}>
-          <input placeholder="Введите имя автора" className={styles.search} />
+          <input
+            onChange={onChange}
+            placeholder="Введите имя автора"
+            className={styles.search}
+          />
         </div>
+        
         <div className={styles.sort__item}></div>
       </div>
 
