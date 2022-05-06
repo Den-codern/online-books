@@ -1,9 +1,12 @@
 import { BookModel } from "../../interfaces/book.interface";
 import { BookActionType } from "../types/book";
 import BookService from "../../services/BookService";
-import { SearchActionType } from "../types/search";
+import { Option, SortActionType } from "../types/sort";
 export function fetchBook(
-  dispatch: (arg0: { type: BookActionType | SearchActionType; payload?: BookModel[] }) => void
+  dispatch: (arg0: {
+    type: BookActionType | SortActionType;
+    payload?: BookModel[] | Option[];
+  }) => void
 ) {
   dispatch(fetchBooksBegin());
 
@@ -11,6 +14,8 @@ export function fetchBook(
     dispatch(fetchBooksSuccess(books));
     dispatch(init(books));
   });
+  const genres = BookService.getAllGenres();
+  dispatch(getGenre(genres));
 }
 
 export const fetchBooksBegin = () => {
@@ -19,9 +24,15 @@ export const fetchBooksBegin = () => {
   };
 };
 
+export function getGenre(genre: Option[]) {
+  return {
+    type: SortActionType.OPTIONS,
+    payload: genre,
+  };
+}
 function init(books: BookModel[]) {
   return {
-    type: SearchActionType.INIT,
+    type: SortActionType.INIT,
     payload: books,
   };
 }

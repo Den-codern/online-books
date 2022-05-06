@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 import { bookReducer } from "./bookReducer";
-import { searchReducer } from "./searchReducer";
+import { sortReducer } from "./sortReducer";
 
 export const rootReducer = combineReducers({
   book: bookReducer,
-  search: searchReducer,
+  sort: sortReducer,
 });
 export type RootState = ReturnType<typeof rootReducer>;
