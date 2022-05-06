@@ -22,5 +22,5 @@
   },
   "include": [
     "src/**/*.ts","declarations.d.ts"
-  ]
+, "src/services/BookService.js"  ]
 }

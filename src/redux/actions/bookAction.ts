@@ -1,11 +1,11 @@
 import { BookModel } from "../../interfaces/book.interface";
-import { BookActionType } from "../types/book";
+import { BookActionType, Genres } from "../types/book";
 import BookService from "../../services/BookService";
 import { Option, SortActionType } from "../types/sort";
 export function fetchBook(
   dispatch: (arg0: {
     type: BookActionType | SortActionType;
-    payload?: BookModel[] | Option[];
+    payload?: BookModel[] | Option[] | Genres[];
   }) => void
 ) {
   dispatch(fetchBooksBegin());
@@ -16,6 +16,14 @@ export function fetchBook(
   });
   const genres = BookService.getAllGenres();
   dispatch(getGenre(genres));
+  const bookCountInGenre = [];
+  const count = BookService.getBookCountInGenre();
+
+  for (const book in count) {
+    bookCountInGenre.push({ name: book, count: count[book] });
+  }
+
+  dispatch(getBookGenres(bookCountInGenre));
 }
 
 export const fetchBooksBegin = () => {
@@ -30,12 +38,21 @@ export function getGenre(genre: Option[]) {
     payload: genre,
   };
 }
+
+function getBookGenres(genres: Genres[]) {
+  return {
+    type: BookActionType.GET_BOOK_GENRES,
+    payload: genres,
+  };
+}
+
 function init(books: BookModel[]) {
   return {
     type: SortActionType.INIT,
     payload: books,
   };
 }
+
 export const fetchBooksSuccess = (books: BookModel[]) => {
   return {
     type: BookActionType.FETCH_BOOKS_SUCCESS,

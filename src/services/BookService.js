@@ -29,5 +29,20 @@ class BookService {
       };
     });
   }
+
+  getBookCountInGenre() {
+    const books = JSON.parse(localStorage.getItem("books"));
+
+    const bookCount = books.reduce((acc, book) => {
+      if (acc[book.genre]) {
+        acc[book.genre]++;
+      } else {
+        acc[book.genre] = 1;
+      }
+      return acc;
+    }, {});
+
+    return bookCount;
+  }
 }
 export default new BookService();
