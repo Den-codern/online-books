@@ -1,5 +1,6 @@
 import { BookModel } from "../interfaces/book.interface";
 import books from "../testData";
+import { generatedID } from "../utils";
 class BookService {
   constructor() {
     if (!localStorage.getItem("books")) {
@@ -43,6 +44,20 @@ class BookService {
     }, {});
 
     return bookCount;
+  }
+
+  addBook(book) {
+    const books = JSON.parse(localStorage.getItem("books"));
+    book.id = generatedID();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        books.push(book);
+        localStorage.setItem("books", JSON.stringify(books));
+        resolve({
+          message: "Книга добавлена",
+        });
+      }, 1000);
+    });
   }
 }
 export default new BookService();

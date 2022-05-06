@@ -4,18 +4,22 @@ import cn from "clsx";
 import Genre from "../../component/Genre/Genre";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/reducers";
+import { useLocation } from "react-router-dom";
 
 function Sidebar({ className, ...props }: SidebarProps) {
   const genres = useSelector((state: RootState) => state.book.genres);
-  console.log(genres);
+  const location = useLocation();
 
   return (
     <div className={cn(className, styles.sidebar)} {...props}>
-      <ul className={styles.categories}>
-        {genres.map((item) => {
-          return <Genre name={item.name} count={item.count}/>;
-        })}
-      </ul>
+      {location.pathname !== "/add" ? (
+        <ul className={styles.categories}>
+          <div className={styles.name}>Все жанры книг :</div>
+          {genres.map((item) => {
+            return <Genre name={item.name} count={item.count} />;
+          })}
+        </ul>
+      ) : null}
     </div>
   );
 }
