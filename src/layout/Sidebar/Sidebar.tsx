@@ -16,7 +16,9 @@ function Sidebar({ className, ...props }: SidebarProps) {
         <ul className={styles.categories}>
           <div className={styles.name}>Все жанры книг :</div>
           {genres.map((item) => {
-            return <Genre name={item.name} count={item.count} />;
+            return (
+              <Genre key={Math.random()} name={item.name} count={item.count} />
+            );
           })}
         </ul>
       ) : null}

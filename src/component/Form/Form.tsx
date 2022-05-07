@@ -2,7 +2,10 @@ import styles from "./Form.module.css";
 import { useFormik } from "formik";
 import { object, string } from "yup";
 import BookService from "../../services/BookService";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 function Form() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       photo: "",
@@ -18,7 +21,12 @@ function Form() {
       genre: string().required("Заполните это поле"),
     }),
     onSubmit: async (value, { resetForm }) => {
-      BookService.addBook(value);
+      BookService.addBook(value).then((data) => {
+        toast.success(data.message);
+
+        resetForm();
+        navigate("/");
+      });
     },
   });
 

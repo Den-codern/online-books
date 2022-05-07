@@ -4,6 +4,7 @@ const books = [
     name: "In Search of Lost Time",
     author: "Marcel Proust",
     genre: "Modernist",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51A685AMYoL._SL160_.jpg",
   },
@@ -12,6 +13,7 @@ const books = [
     name: "Don Quixote",
     author: "Miguel de Cervantes",
     genre: "Satire",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/41u9Jedk-mL._SL160_.jpg",
   },
@@ -20,6 +22,7 @@ const books = [
     name: "Ulysses",
     author: "James Joyce",
     genre: "Fiction",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51wTLf4JVwL._SL160_.jpg",
   },
@@ -28,6 +31,7 @@ const books = [
     name: "The Great Gatsby",
     author: "F. Scott Fitzgerald",
     genre: "Fiction",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51vv75oglyL._SL160_.jpg",
   },
@@ -36,6 +40,7 @@ const books = [
     name: "Hamlet",
     author: "William Shakespeare",
     genre: "Drama",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51dhOwUuI3L._SL160_.jpg",
   },
@@ -44,6 +49,7 @@ const books = [
     name: "War and Peace",
     author: "Leo Tolstoy",
     genre: "Novel",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51J1nb00FLL._SL160_.jpg",
   },
@@ -52,6 +58,7 @@ const books = [
     name: "The Odyssey",
     author: "Homer",
     genre: "Epic",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/51FR8mSgqoL._SL160_.jpg",
   },
@@ -59,7 +66,7 @@ const books = [
     id: "_opzd19yyy",
     name: "The Divine Comedy",
     genre: "Epic",
-    author: "Dante Alighieri",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/61Ml8RHqxrL._SL160_.jpg",
   },
@@ -68,6 +75,7 @@ const books = [
     name: "The Brothers Karamazov",
     author: "Fyodor Dostoyevsky",
     genre: "Novel",
+    users: [],
     photo: "http://ecx.images-amazon.com/images/I/51c4Gb6Uo0L._SL160_.jpg",
   },
   {
@@ -75,6 +83,7 @@ const books = [
     name: "The Adventures of Huckleberry",
     author: "Mark Twain",
     genre: "Satire",
+    users: [],
     photo: "http://ecx.images-amazon.com/images/I/51Ht1M-GPXL._SL160_.jpg",
   },
   {
@@ -82,6 +91,7 @@ const books = [
     name: "The Iliad",
     author: "Homer",
     genre: "Epic",
+    users: [],
     photo: "http://ecx.images-amazon.com/images/I/512j6byhjvL._SL160_.jpg",
   },
   {
@@ -89,6 +99,7 @@ const books = [
     name: "Alice's Adventures in Wonderland",
     author: "Lewis Carroll",
     genre: "Fantasy",
+    users: [],
     photo: "http://ecx.images-amazon.com/images/I/41h9Pz2qeIL._SL160_.jpg",
   },
   {
@@ -96,6 +107,7 @@ const books = [
     name: "To the Lighthouse",
     author: "Virginia Woolf",
     genre: "Modernism",
+    users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/512RH0o4H2L._SL160_.jpg",
   },

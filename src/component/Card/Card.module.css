@@ -11,12 +11,26 @@
 .author {
   font-size: 12px;
 }
-.btn {
-  margin-top: 10px;
-  padding: 10px;
+.star {
+  cursor: pointer;
+}
+.edit {
+  margin-right: 15px;
   border: none;
+  font-size: 17px;
+  padding: 5px 10px;
+  background-color: #FFC400;
+  font-weight: bold;
   color: var(--wt);
-  background-color: var(--blue);
-  font-size: 20px;
+  cursor: pointer;
+}
+.delete {
+  margin-right: 15px;
+  border: none;
+  font-size: 17px;
+  padding: 5px 10px;
+  background-color: #FC5A67;
+  font-weight: bold;
+  color: var(--wt);
   cursor: pointer;
 }

@@ -4,4 +4,5 @@ export interface BookModel {
   genre: string;
   author: string;
   photo: string;
+  users:string[]
 }

@@ -59,5 +59,50 @@ class BookService {
       }, 1000);
     });
   }
+
+  addStar(bookId, userId) {
+    const books = JSON.parse(localStorage.getItem("books"));
+    const findIndex = books.findIndex((book) => book.id === bookId);
+
+    if (books[findIndex].users.includes(userId)) {
+      books[findIndex].users = [];
+    } else {
+      books[findIndex].users.push(userId);
+    }
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
+
+  getFavoriteBook(userId) {
+    const books = JSON.parse(localStorage.getItem("books"));
+    const findBooks = [];
+
+    books.map((book) => {
+      if (book.users.includes(userId)) {
+        console.log("find");
+        findBooks.push(book);
+      }
+    });
+    return findBooks;
+  }
+
+  editBook(values, bookId) {
+    const books = JSON.parse(localStorage.getItem("books"));
+    const findIndex = books.findIndex((book) => {
+      return book.id === bookId;
+    });
+    books[findIndex].photo = values.photo;
+    books[findIndex].name = values.name;
+    books[findIndex].genre = values.genre;
+    books[findIndex].author = values.author;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        localStorage.setItem("books", JSON.stringify(books));
+        resolve({
+          message: "Книга сохранена",
+        });
+      }, 1000);
+    });
+  }
 }
 export default new BookService();

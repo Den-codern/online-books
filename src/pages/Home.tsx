@@ -13,6 +13,8 @@ import BookService from "../services/BookService";
 import { SortActionType } from "../redux/types/sort";
 import Spinner from "../component/Spinner/Spinner";
 import Select from "react-select";
+import UserService from "../services/UserService";
+import Modal from "../component/Modal/Modal";
 function Home() {
   const dispatch = useDispatch();
   const books = useSelector((state: RootState) => state.sort.books);
@@ -20,6 +22,7 @@ function Home() {
   const sortType = useSelector((state: RootState) => state.sort.sortType);
   const loading = useSelector((state: RootState) => state.book.loading);
   const options = useSelector((state: RootState) => state.sort.options);
+  const open = useSelector((state: RootState) => state.modal.open);
   useEffect(() => {
     dispatch(fetchBook);
   }, []);
@@ -95,9 +98,19 @@ function Home() {
 
       <div className={styles.books}>
         {books.map((book) => (
-          <Card name={book.name} photo={book.photo} author={book.author} />
+          <Card
+            key={book.id}
+            users={book.users}
+            genre={book.genre}
+            id={book.id}
+            name={book.name}
+            photo={book.photo}
+            author={book.author}
+            isStar={book.users.includes(UserService.getId())}
+          />
         ))}
       </div>
+      {open ? <Modal /> : null}
     </div>
   );
 }

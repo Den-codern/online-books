@@ -14,6 +14,8 @@ export enum BookActionType {
   FETCH_BOOKS_BEGIN = "FETCH_BOOKS_BEGIN",
   FETCH_BOOKS_SUCCESS = "FETCH_BOOKS_SUCCESS",
   GET_BOOK_GENRES = "GET_BOOK_GENRES",
+  ADD_STAR = "ADD_STAR",
+  EDIT_BOOK = "EDIT_BOOK",
 }
 
 interface fetchBooksBegin {
@@ -30,4 +32,19 @@ interface getBookGenres {
   payload: Genres[];
 }
 
-export type BookAction = fetchBooksBegin | fetchBooksSuccess | getBookGenres;
+interface addStar {
+  type: BookActionType.ADD_STAR;
+  payload: { bookId: string; userId: string };
+}
+
+interface editBook {
+  type: BookActionType.EDIT_BOOK;
+  payload: BookModel;
+}
+
+export type BookAction =
+  | fetchBooksBegin
+  | fetchBooksSuccess
+  | getBookGenres
+  | addStar
+  | editBook;

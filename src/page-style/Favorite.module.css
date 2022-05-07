@@ -1,0 +1,20 @@
+.favorite {
+  padding: 20px;
+}
+.books {
+  display: flex;
+  flex-wrap: wrap;
+}
+.books__item {
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+.photo {
+    margin-bottom: 20px;
+}
+.name {
+  font-size: 14px;
+}
+.author {
+    font-size: 12px;
+}
