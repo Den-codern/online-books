@@ -38,9 +38,12 @@ export const bookReducer: Reducer<BookState, BookAction> = (
       books[findIndex].name = action.payload.name;
       books[findIndex].photo = action.payload.photo;
       books[findIndex].genre = action.payload.genre;
-      console.log(findIndex);
-      
-      console.log(action.payload);
+      return { ...state, books };
+    case BookActionType.DELETE_BOOK:
+      books = [...state.books];
+      findIndex = books.findIndex((book) => book.id === action.payload);
+
+      books.splice(findIndex, 1);
 
       return { ...state, books };
     default:

@@ -6,4 +6,5 @@ export interface CardProps {
   isStar: boolean;
   genre: string;
   users: string[];
+  onDelete: (id: string) => void;
 }

@@ -15,6 +15,7 @@ import Spinner from "../component/Spinner/Spinner";
 import Select from "react-select";
 import UserService from "../services/UserService";
 import Modal from "../component/Modal/Modal";
+import { BookActionType } from "../redux/types/book";
 function Home() {
   const dispatch = useDispatch();
   const books = useSelector((state: RootState) => state.sort.books);
@@ -23,10 +24,17 @@ function Home() {
   const loading = useSelector((state: RootState) => state.book.loading);
   const options = useSelector((state: RootState) => state.sort.options);
   const open = useSelector((state: RootState) => state.modal.open);
+  console.log(defaultBooks);
+
   useEffect(() => {
     dispatch(fetchBook);
   }, []);
 
+  function onDelete(id: string) {
+    BookService.deleteBook(id);
+    dispatch({ type: BookActionType.DELETE_BOOK, payload: id });
+    dispatch({ type: SortActionType.BOOK_DELETE, payload: id });
+  }
   function onChange(e) {
     dispatch({
       type: SortActionType.RESET_BOOKS,
@@ -106,6 +114,7 @@ function Home() {
             name={book.name}
             photo={book.photo}
             author={book.author}
+            onDelete={onDelete}
             isStar={book.users.includes(UserService.getId())}
           />
         ))}

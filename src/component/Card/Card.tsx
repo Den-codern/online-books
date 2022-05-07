@@ -3,11 +3,22 @@ import { CardProps } from "./Card.props";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import BookService from "../../services/BookService";
 import UserService from "../../services/UserService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BookActionType } from "../../redux/types/book";
 import { ModalActionType } from "../../redux/types/modal";
-function Card({ photo, genre, name, users, author, id, isStar }: CardProps) {
+
+function Card({
+  photo,
+  genre,
+  name,
+  users,
+  author,
+  id,
+  isStar,
+  onDelete,
+}: CardProps) {
   const dispatch = useDispatch();
+
   function onStar() {
     BookService.addStar(id, UserService.getId());
     dispatch({
@@ -15,12 +26,13 @@ function Card({ photo, genre, name, users, author, id, isStar }: CardProps) {
       payload: { bookId: id, userId: UserService.getId() },
     });
   }
-  function onClick() {
+  function onEdit() {
     dispatch({
       type: ModalActionType.OPEN_MODAL,
       payload: { photo, name, author, id, genre, users },
     });
   }
+
   return (
     <div className={styles.card}>
       <div className={styles.card__img}>
@@ -38,8 +50,17 @@ function Card({ photo, genre, name, users, author, id, isStar }: CardProps) {
         )}
       </div>
 
-      <button onClick={onClick} className={styles.edit}>Edit</button>
-      <button className={styles.delete}>Delete</button>
+      <button onClick={onEdit} className={styles.edit}>
+        Edit
+      </button>
+      <button
+        onClick={() => {
+          onDelete(id);
+        }}
+        className={styles.delete}
+      >
+        Delete
+      </button>
     </div>
   );
 }

@@ -101,8 +101,19 @@ class BookService {
         resolve({
           message: "Книга сохранена",
         });
-      }, 1000);
+      }, 500);
     });
+  }
+
+  deleteBook(bookId) {
+    const books = JSON.parse(localStorage.getItem("books"));
+
+    const findIndex = books.findIndex((book) => {
+      return book.id === bookId;
+    });
+
+    books.splice(findIndex, 1);
+    localStorage.setItem("books", JSON.stringify(books));
   }
 }
 export default new BookService();

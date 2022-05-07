@@ -8,6 +8,7 @@ import { useLocation } from "react-router-dom";
 
 function Sidebar({ className, ...props }: SidebarProps) {
   const genres = useSelector((state: RootState) => state.book.genres);
+
   const location = useLocation();
 
   return (

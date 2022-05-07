@@ -56,6 +56,14 @@ export const sortReducer: Reducer<SortState, SortAction> = (
       });
 
       return { ...state, books };
+    case SortActionType.ADD_BOOKS:
+      return { ...state, books: action.payload };
+    case SortActionType.BOOK_DELETE:
+      books = [...state.books];
+      const findIndex = books.findIndex((book) => book.id === action.payload);
+      books.splice(findIndex, 1);
+      return { ...state, books };
+
     default:
       return state;
   }

@@ -20,6 +20,8 @@ export enum SortActionType {
   SORT_DESC = "SORT_DESC",
   SELECT = "SELECT",
   OPTIONS = "OPTIONS",
+  ADD_BOOKS = "ADD_BOOKS",
+  BOOK_DELETE = "BOOK_DELETE",
 }
 
 interface init {
@@ -51,11 +53,18 @@ interface sortDesc {
   payload: string;
 }
 
+interface addBooks {
+  type: SortActionType.ADD_BOOKS;
+  payload: BookModel[];
+}
 interface options {
   type: SortActionType.OPTIONS;
   payload: Option[];
 }
-
+interface bookDelete {
+  type: SortActionType.BOOK_DELETE;
+  payload: string;
+}
 export type SortAction =
   | init
   | findBooks
@@ -63,4 +72,6 @@ export type SortAction =
   | sortAsc
   | sortDesc
   | select
-  | options;
+  | options
+  | addBooks
+  | bookDelete;

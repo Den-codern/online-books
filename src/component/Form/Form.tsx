@@ -40,6 +40,9 @@ function Form() {
           placeholder="Фото книги"
           className={styles.input}
         />
+        {formik.touched.photo && formik.errors.photo ? (
+          <div className={styles.error}>{formik.errors.photo}</div>
+        ) : null}
       </div>
       <div>
         <input
@@ -49,6 +52,9 @@ function Form() {
           name="name"
           className={styles.input}
         />
+        {formik.touched.name && formik.errors.name ? (
+          <div className={styles.error}>{formik.errors.name}</div>
+        ) : null}
       </div>
       <div>
         <input
@@ -58,6 +64,9 @@ function Form() {
           placeholder="Имя автора"
           className={styles.input}
         />
+        {formik.touched.author && formik.errors.author ? (
+          <div className={styles.error}>{formik.errors.author}</div>
+        ) : null}
       </div>
       <div>
         <input
@@ -67,6 +76,9 @@ function Form() {
           name="genre"
           className={styles.input}
         />
+        {formik.touched.genre && formik.errors.genre ? (
+          <div className={styles.error}>{formik.errors.genre}</div>
+        ) : null}
       </div>
       <button className={styles.btn} type="submit">
         Add book

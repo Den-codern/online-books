@@ -39,7 +39,7 @@ export function getGenre(genre: Option[]) {
   };
 }
 
-function getBookGenres(genres: Genres[]) {
+export function getBookGenres(genres: Genres[]) {
   return {
     type: BookActionType.GET_BOOK_GENRES,
     payload: genres,

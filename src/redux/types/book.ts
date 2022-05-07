@@ -16,6 +16,7 @@ export enum BookActionType {
   GET_BOOK_GENRES = "GET_BOOK_GENRES",
   ADD_STAR = "ADD_STAR",
   EDIT_BOOK = "EDIT_BOOK",
+  DELETE_BOOK = "DELETE_BOOK",
 }
 
 interface fetchBooksBegin {
@@ -41,10 +42,15 @@ interface editBook {
   type: BookActionType.EDIT_BOOK;
   payload: BookModel;
 }
+interface deleteBook {
+  type: BookActionType.DELETE_BOOK;
+  payload: string;
+}
 
 export type BookAction =
   | fetchBooksBegin
   | fetchBooksSuccess
   | getBookGenres
   | addStar
-  | editBook;
+  | editBook
+  | deleteBook;
