@@ -1,4 +1,3 @@
-import { BookModel } from "../interfaces/book.interface";
 import books from "../testData";
 import { generatedID } from "../utils";
 class BookService {
@@ -79,7 +78,6 @@ class BookService {
 
     books.map((book) => {
       if (book.users.includes(userId)) {
-        console.log("find");
         findBooks.push(book);
       }
     });

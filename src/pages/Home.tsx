@@ -16,6 +16,7 @@ import Select from "react-select";
 import UserService from "../services/UserService";
 import Modal from "../component/Modal/Modal";
 import { BookActionType } from "../redux/types/book";
+import { toast } from "react-toastify";
 function Home() {
   const dispatch = useDispatch();
   const books = useSelector((state: RootState) => state.sort.books);
@@ -24,7 +25,6 @@ function Home() {
   const loading = useSelector((state: RootState) => state.book.loading);
   const options = useSelector((state: RootState) => state.sort.options);
   const open = useSelector((state: RootState) => state.modal.open);
-  console.log(defaultBooks);
 
   useEffect(() => {
     dispatch(fetchBook);
@@ -34,6 +34,7 @@ function Home() {
     BookService.deleteBook(id);
     dispatch({ type: BookActionType.DELETE_BOOK, payload: id });
     dispatch({ type: SortActionType.BOOK_DELETE, payload: id });
+    toast.success("Книга удалена");
   }
   function onChange(e) {
     dispatch({
@@ -79,7 +80,7 @@ function Home() {
       <div className={styles.sort}>
         <div className={styles.sort__item}>
           <button className={styles.btn} onClick={onClick}>
-            {sortType == "asc" ? (
+            {sortType === "asc" ? (
               <AiOutlineSortAscending />
             ) : (
               <AiOutlineSortDescending />
