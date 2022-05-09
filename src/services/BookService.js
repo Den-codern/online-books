@@ -48,6 +48,7 @@ class BookService {
   addBook(book) {
     const books = JSON.parse(localStorage.getItem("books"));
     book.id = generatedID();
+    book.users = []
     return new Promise((resolve) => {
       setTimeout(() => {
         books.push(book);
