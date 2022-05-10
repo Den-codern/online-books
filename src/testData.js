@@ -66,6 +66,7 @@ const books = [
     id: "_opzd19yyy",
     name: "The Divine Comedy",
     genre: "Epic",
+    author:"Dante Alighieri"
     users: [],
     photo:
       "https://images-na.ssl-images-amazon.com/images/I/61Ml8RHqxrL._SL160_.jpg",
